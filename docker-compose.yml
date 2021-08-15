@@ -7,6 +7,4 @@ services:
       - .:/app
     env_file:
       - .env
-    ports:
-      - "80:80"
     entrypoint: /app/entrypoint.sh
