@@ -9,7 +9,7 @@ __pycache__
 
 # Settings
 .envrc
-.env
+#.env
 
 # DB
 app.db
