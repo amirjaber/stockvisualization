@@ -87,54 +87,54 @@ def register_callbacks(dashapp):
             return figure
         else:
             raise dash.exceptions.PreventUpdate()
-    # @dashapp.callback(
-    #     Output('my-graph1', 'figure'),
-    #     Input('my-dropdown', 'value'),
-    #     Input('my-timeframe', 'value'),
-    #     Input('my-indicator', 'value'),
-    #     Input('checkbox','value'),
-    #     State('user-store', 'data'))
-    # def update_graph2(selected_dropdown_value,timeframe,indicator,rangeslider, data):
-    #     td = TDClient(apikey="140b16b51ae44d3ab483ffe1bcefbd9d")
-    #     ts = td.time_series(
-    #         symbol=selected_dropdown_value,
-    #         outputsize=100,
-    #         interval=timeframe,
-    #     )
-    #     df = ts.as_pandas()
-    #     fig_data = []
-    #     fig_data.append(
-    #         go.Bar(
-    #             x=df.index,
-    #             y=df.volume,orientation='v'
-    #         )
-    #     )        
-    #     figure = go.Figure(
-    #     data=fig_data,
-    #     layout=go.Layout(
-    #         xaxis=dict(zeroline=False),
-    #         yaxis=dict(
-    #             title=dict(
-    #                 text="Volume",
-    #                 font=dict(
-    #                     family='"Open Sans", "HelveticaNeue", "Helvetica Neue",'
-    #                     " Helvetica, Arial, sans-serif",
-    #                     size=12,
-    #                 ),
-    #             ),
-    #             type="log",
-    #             rangemode="tozero",
-    #             zeroline=False,
-    #             showticklabels=False,
-    #         ),
-    #         margin=dict(l=40, r=30, b=50, t=50),
-    #         showlegend=False,
-    #         height=150,
-    #         paper_bgcolor="rgb(245, 247, 249)",
-    #         plot_bgcolor="rgb(245, 247, 249)",
-    #     ),
-    #     )
-    #     return figure
+    @dashapp.callback(
+        Output('my-graph1', 'figure'),
+        Input('my-dropdown', 'value'),
+        Input('my-timeframe', 'value'),
+        Input('my-indicator', 'value'),
+        Input('checkbox','value'),
+        State('user-store', 'data'))
+    def update_graph2(selected_dropdown_value,timeframe,indicator,rangeslider, data):
+        td = TDClient(apikey="140b16b51ae44d3ab483ffe1bcefbd9d")
+        ts = td.time_series(
+            symbol=selected_dropdown_value,
+            outputsize=100,
+            interval=timeframe,
+        )
+        df = ts.as_pandas()
+        fig_data = []
+        fig_data.append(
+            go.Bar(
+                x=df.index,
+                y=df.volume,orientation='v'
+            )
+        )        
+        figure = go.Figure(
+        data=fig_data,
+        layout=go.Layout(
+            xaxis=dict(zeroline=False),
+            yaxis=dict(
+                title=dict(
+                    text="Volume",
+                    font=dict(
+                        family='"Open Sans", "HelveticaNeue", "Helvetica Neue",'
+                        " Helvetica, Arial, sans-serif",
+                        size=12,
+                    ),
+                ),
+                type="log",
+                rangemode="tozero",
+                zeroline=False,
+                showticklabels=False,
+            ),
+            margin=dict(l=40, r=30, b=50, t=50),
+            showlegend=False,
+            height=150,
+            paper_bgcolor="rgb(245, 247, 249)",
+            plot_bgcolor="rgb(245, 247, 249)",
+        ),
+        )
+        return figure
     
     @dashapp.callback(
         Output('user-store', 'data'),

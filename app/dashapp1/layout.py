@@ -5,7 +5,7 @@ import dash_html_components as html
 layout = html.Div(id='main', children=[
     html.H1(id='username'),html.Div(id='checkbox',children=[
     dcc.Checklist(
-    options=[{'label': 'Range slider', 'value': "True"}],
+    options=[{'label': 'Twelve-data', 'value': "True"}],
     value="True")]), html.Div(id='both', children=[
     html.Div(id='tickers', children=[html.H1('Stock Tickers'),
     dcc.Dropdown(
@@ -40,7 +40,7 @@ layout = html.Div(id='main', children=[
         value='talib.EMA'
     )], style=dict(width='20%'))],style={"display":"flex", "justify-content":"space-around","margin": "auto"}),
     dcc.Graph(id='my-graph',animate=True),
-    # dcc.Graph(id='my-graph1',animate=True),
+    dcc.Graph(id='my-graph1',animate=True),
     dcc.Interval(id='graph-update',interval=60000,n_intervals = 0),
     dcc.Store(id='user-store'),
 ], style=dict(width=1000))
